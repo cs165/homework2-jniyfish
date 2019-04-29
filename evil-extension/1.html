@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Recursive DOM walk</title>
+    <script src="dom-walk-script.js" defer></script>
+  </head>
+  <body>
+  	<h1>My favorites</h1>
+  	<section>
+  		<p>Strawberries</p>
+  		<p>Chocolate</p>
+  	</section>
+  </body>
+</html>
+
+<script>
+  function walkTree(root, level) {
+  if (root.nodeType == Node.TEXT_NODE) {
+    console.log(level + 'text:' + root.textContent);
+  } else {
+    console.log(level + root.nodeName + 'FUCK');
+  }
+  for (const child of root.childNodes) {
+    walkTree(child, level + "");
+  }
+}
+
+walkTree(document.querySelector('html'), "");
+</script>
